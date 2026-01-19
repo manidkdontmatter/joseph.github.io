@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Contact Premier Home Builders for a free estimate. Call (555) 123-4567 or fill out our contact form.">
+    <title>Contact Us - Premier Home Builders</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <span class="logo-icon">🏗️</span>
+                <span>Premier Home Builders</span>
+            </div>
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="hero" style="height: 300px;">
+        <div class="hero-content">
+            <h1>Contact Us</h1>
+            <p>Let's discuss your project and bring your vision to life</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section>
+        <div class="container">
+            <div class="grid grid-2" style="gap: var(--spacing-lg);">
+                <!-- Contact Form -->
+                <div>
+                    <h2>Get a Free Estimate</h2>
+                    <p style="margin-bottom: var(--spacing-md);">Fill out the form below and we'll get back to you
+                        within 24 hours.</p>
+
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="service">Service Interested In</label>
+                            <select id="service" name="service">
+                                <option value="">Select a service</option>
+                                <option value="custom-home">Custom Home Building</option>
+                                <option value="repairs">Home Repairs</option>
+                                <option value="porch-deck">Porch/Deck Construction</option>
+                                <option value="renovation">Renovation/Addition</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Project Details *</label>
+                            <textarea id="message" name="message" required
+                                placeholder="Tell us about your project..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                    </form>
+
+                    <div id="formSuccess"
+                        style="display: none; margin-top: var(--spacing-sm); padding: var(--spacing-sm); background-color: #d4edda; color: #155724; border-radius: 6px; text-align: center;">
+                        <strong>Thank you!</strong> Your message has been sent. We'll contact you soon.
+                    </div>
+                </div>
+
+                <!-- Contact Information -->
+                <div>
+                    <h2>Contact Information</h2>
+                    <p style="margin-bottom: var(--spacing-md);">Reach out to us directly using any of the methods
+                        below.</p>
+
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <span class="contact-icon">📞</span>
+                            <div>
+                                <strong>Phone</strong>
+                                <p style="margin: 0;"><a href="tel:555-123-4567">(555) 123-4567</a></p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <span class="contact-icon">✉️</span>
+                            <div>
+                                <strong>Email</strong>
+                                <p style="margin: 0;"><a
+                                        href="mailto:info@premierhomebuilders.com">info@premierhomebuilders.com</a></p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <span class="contact-icon">📍</span>
+                            <div>
+                                <strong>Address</strong>
+                                <p style="margin: 0;">123 Builder Lane<br>Springfield, ST 12345</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <span class="contact-icon">🕐</span>
+                            <div>
+                                <strong>Business Hours</strong>
+                                <p style="margin: 0;">
+                                    Monday - Friday: 8:00 AM - 6:00 PM<br>
+                                    Saturday: 9:00 AM - 4:00 PM<br>
+                                    Sunday: Closed
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: var(--spacing-md);">
+                        <h3>Follow Us</h3>
+                        <div class="social-links" style="margin-top: var(--spacing-sm);">
+                            <a href="#" aria-label="Facebook" style="background-color: var(--primary-color);">📘</a>
+                            <a href="#" aria-label="Instagram" style="background-color: var(--primary-color);">📷</a>
+                            <a href="#" aria-label="LinkedIn" style="background-color: var(--primary-color);">💼</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="bg-light">
+        <div class="container">
+            <h2 class="text-center" style="margin-bottom: var(--spacing-md);">Visit Our Office</h2>
+            <div class="map-container">
+                <p style="font-size: 1.1rem; color: var(--text-muted);">📍 Map placeholder - Replace with Google Maps
+                    embed</p>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: var(--spacing-sm);">123 Builder Lane,
+                    Springfield, ST 12345</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emergency Contact -->
+    <section>
+        <div class="container">
+            <div class="card"
+                style="background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%); color: var(--bg-white); text-align: center; padding: var(--spacing-lg);">
+                <h2 style="color: var(--bg-white); margin-bottom: var(--spacing-sm);">Emergency Repairs?</h2>
+                <p style="font-size: 1.2rem; color: rgba(255, 255, 255, 0.95); margin-bottom: var(--spacing-md);">We
+                    offer 24/7 emergency repair services for urgent situations</p>
+                <a href="tel:555-123-4567" class="btn btn-primary" style="background-color: var(--accent-color);">Call
+                    Now: (555) 123-4567</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="bg-light">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <div class="grid grid-2">
+                <div class="card">
+                    <h3>Do you offer free estimates?</h3>
+                    <p>Yes! We provide free, no-obligation estimates for all projects. Contact us to schedule a
+                        consultation.</p>
+                </div>
+                <div class="card">
+                    <h3>Are you licensed and insured?</h3>
+                    <p>Absolutely. We are fully licensed, bonded, and insured for your complete protection and peace of
+                        mind.</p>
+                </div>
+                <div class="card">
+                    <h3>What areas do you serve?</h3>
+                    <p>We serve Springfield and surrounding areas within a 50-mile radius. Contact us to confirm service
+                        in your area.</p>
+                </div>
+                <div class="card">
+                    <h3>How long does a typical project take?</h3>
+                    <p>Project timelines vary based on scope. We'll provide a detailed timeline during your
+                        consultation.</p>
+                </div>
+                <div class="card">
+                    <h3>Do you offer financing options?</h3>
+                    <p>Yes, we work with several financing partners to help make your project affordable. Ask us for
+                        details.</p>
+                </div>
+                <div class="card">
+                    <h3>What warranty do you provide?</h3>
+                    <p>All our work comes with a comprehensive warranty. Specific terms vary by project type and will be
+                        detailed in your contract.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Premier Home Builders</h3>
+                    <p>Building quality homes and lasting relationships since 2003.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="LinkedIn">💼</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="services.html">Services</a>
+                    <a href="gallery.html">Gallery</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <a href="services.html">Custom Home Building</a>
+                    <a href="services.html">Home Repairs</a>
+                    <a href="services.html">Porches & Decks</a>
+                    <a href="services.html">Renovations</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>📞 (555) 123-4567</p>
+                    <p>✉️ info@premierhomebuilders.com</p>
+                    <p>📍 123 Builder Lane<br>Springfield, ST 12345</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Premier Home Builders. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
