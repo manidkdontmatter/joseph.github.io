@@ -695,6 +695,15 @@ footer {
   .footer-content {
     grid-template-columns: 1fr;
   }
+
+  /* Gallery overlay always visible on mobile */
+  .gallery-overlay {
+    transform: translateY(0);
+  }
+
+  .gallery-item:hover .gallery-overlay {
+    transform: translateY(0);
+  }
 }
 
 /* Utility Classes */
