@@ -5,15 +5,15 @@ const navLinks = document.querySelector('.nav-links');
 if (menuToggle) {
     menuToggle.addEventListener('click', () => {
         navLinks.classList.toggle('active');
-        
+
         // Animate hamburger menu
         const spans = menuToggle.querySelectorAll('span');
-        spans[0].style.transform = navLinks.classList.contains('active') 
-            ? 'rotate(45deg) translate(5px, 5px)' 
+        spans[0].style.transform = navLinks.classList.contains('active')
+            ? 'rotate(45deg) translate(5px, 5px)'
             : 'none';
         spans[1].style.opacity = navLinks.classList.contains('active') ? '0' : '1';
-        spans[2].style.transform = navLinks.classList.contains('active') 
-            ? 'rotate(-45deg) translate(7px, -6px)' 
+        spans[2].style.transform = navLinks.classList.contains('active')
+            ? 'rotate(-45deg) translate(7px, -6px)'
             : 'none';
     });
 }
@@ -98,42 +98,42 @@ const formSuccess = document.getElementById('formSuccess');
 if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        
+
         // Get form values
         const name = document.getElementById('name').value.trim();
         const email = document.getElementById('email').value.trim();
         const phone = document.getElementById('phone').value.trim();
         const message = document.getElementById('message').value.trim();
-        
+
         // Basic validation
         if (!name || !email || !phone || !message) {
             alert('Please fill in all required fields.');
             return;
         }
-        
+
         // Email validation
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
             alert('Please enter a valid email address.');
             return;
         }
-        
+
         // Phone validation (basic)
         const phoneRegex = /^[\d\s\-\(\)]+$/;
         if (!phoneRegex.test(phone)) {
             alert('Please enter a valid phone number.');
             return;
         }
-        
+
         // Simulate form submission
         // In a real implementation, you would send this data to a server
         console.log('Form submitted:', { name, email, phone, message });
-        
+
         // Show success message
         if (formSuccess) {
             formSuccess.style.display = 'block';
             contactForm.reset();
-            
+
             // Hide success message after 5 seconds
             setTimeout(() => {
                 formSuccess.style.display = 'none';
@@ -169,11 +169,11 @@ document.querySelectorAll('.fade-in-up').forEach(el => {
 function setActiveNavLink() {
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     const navLinks = document.querySelectorAll('.nav-links a');
-    
+
     navLinks.forEach(link => {
         link.classList.remove('active');
         const linkPage = link.getAttribute('href');
-        if (linkPage === currentPage || 
+        if (linkPage === currentPage ||
             (currentPage === '' && linkPage === 'index.html')) {
             link.classList.add('active');
         }
@@ -189,13 +189,13 @@ const header = document.querySelector('header');
 
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
-    
+
     if (currentScroll > 50) {
         header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
     } else {
         header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
     }
-    
+
     lastScroll = currentScroll;
 });
 
@@ -203,3 +203,31 @@ window.addEventListener('scroll', () => {
 if (window.history.replaceState) {
     window.history.replaceState(null, null, window.location.href);
 }
+
+// Dynamic Years Experience Calculation
+function updateYearsExperience() {
+    const startDate = new Date('2021-01-01');
+    const currentDate = new Date();
+
+    // Calculate the difference in years
+    let years = currentDate.getFullYear() - startDate.getFullYear();
+    const monthDiff = currentDate.getMonth() - startDate.getMonth();
+    const dayDiff = currentDate.getDate() - startDate.getDate();
+
+    // Adjust if we haven't reached the anniversary date this year
+    if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+        years--;
+    }
+
+    const yearsText = years + '+';
+
+    // Update all elements with the yearsExperience class
+    const yearsElements = document.querySelectorAll('.yearsExperience');
+    yearsElements.forEach(element => {
+        element.textContent = yearsText;
+    });
+}
+
+// Update years on page load
+updateYearsExperience();
+
