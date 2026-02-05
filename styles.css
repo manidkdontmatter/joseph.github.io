@@ -139,7 +139,8 @@ nav {
 }
 
 .logo-icon {
-  font-size: 2rem;
+  height: 40px;
+  width: auto;
 }
 
 .nav-links {
@@ -741,4 +742,17 @@ footer {
 
 .mb-4 {
   margin-bottom: var(--spacing-lg);
+}
+
+/* BBB Logo */
+.bbb-logo {
+  height: 60px;
+  width: auto;
+  margin-top: 1rem;
+  transition: transform var(--transition-fast);
+  display: inline-block;
+}
+
+.bbb-logo:hover {
+  transform: scale(1.05);
 }

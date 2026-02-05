@@ -1,0 +1,1 @@
+website can be viewed locally with 'npx http-server -p 8000'

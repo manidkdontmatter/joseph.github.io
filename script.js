@@ -1,36 +1,116 @@
-// Mobile Navigation Toggle
-const menuToggle = document.querySelector('.menu-toggle');
-const navLinks = document.querySelector('.nav-links');
+// Load HTML Includes (Header & Footer)
+async function loadIncludes() {
+    try {
+        // Load header
+        const headerResponse = await fetch('includes/header.html');
+        if (headerResponse.ok) {
+            const headerHTML = await headerResponse.text();
+            const headerPlaceholder = document.getElementById('header-placeholder');
+            if (headerPlaceholder) {
+                headerPlaceholder.outerHTML = headerHTML;
+            }
+        } else {
+            console.warn('Failed to load header.html');
+        }
 
-if (menuToggle) {
-    menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
+        // Load footer
+        const footerResponse = await fetch('includes/footer.html');
+        if (footerResponse.ok) {
+            const footerHTML = await footerResponse.text();
+            const footerPlaceholder = document.getElementById('footer-placeholder');
+            if (footerPlaceholder) {
+                footerPlaceholder.outerHTML = footerHTML;
+            }
+        } else {
+            console.warn('Failed to load footer.html');
+        }
 
-        // Animate hamburger menu
-        const spans = menuToggle.querySelectorAll('span');
-        spans[0].style.transform = navLinks.classList.contains('active')
-            ? 'rotate(45deg) translate(5px, 5px)'
-            : 'none';
-        spans[1].style.opacity = navLinks.classList.contains('active') ? '0' : '1';
-        spans[2].style.transform = navLinks.classList.contains('active')
-            ? 'rotate(-45deg) translate(7px, -6px)'
-            : 'none';
+        // After includes are loaded, initialize navigation and other features
+        initializeNavigation();
+        initializeScrollEffects();
+    } catch (error) {
+        console.error('Error loading includes:', error);
+    }
+}
+
+// Initialize navigation features (called after includes load)
+function initializeNavigation() {
+    // Set active navigation link
+    setActiveNavLink();
+
+    // Mobile Navigation Toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+
+            // Animate hamburger menu
+            const spans = menuToggle.querySelectorAll('span');
+            spans[0].style.transform = navLinks.classList.contains('active')
+                ? 'rotate(45deg) translate(5px, 5px)'
+                : 'none';
+            spans[1].style.opacity = navLinks.classList.contains('active') ? '0' : '1';
+            spans[2].style.transform = navLinks.classList.contains('active')
+                ? 'rotate(-45deg) translate(7px, -6px)'
+                : 'none';
+        });
+    }
+
+    // Close mobile menu when clicking a link
+    const navLinkItems = document.querySelectorAll('.nav-links a');
+    navLinkItems.forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                navLinks.classList.remove('active');
+                const spans = menuToggle.querySelectorAll('span');
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
+        });
     });
 }
 
-// Close mobile menu when clicking a link
-const navLinkItems = document.querySelectorAll('.nav-links a');
-navLinkItems.forEach(link => {
-    link.addEventListener('click', () => {
-        if (window.innerWidth <= 768) {
-            navLinks.classList.remove('active');
-            const spans = menuToggle.querySelectorAll('span');
-            spans[0].style.transform = 'none';
-            spans[1].style.opacity = '1';
-            spans[2].style.transform = 'none';
+// Initialize scroll effects (called after includes load)
+function initializeScrollEffects() {
+    // Header scroll effect (optional - adds shadow on scroll)
+    const header = document.querySelector('header');
+
+    if (header) {
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll > 50) {
+                header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+            } else {
+                header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
+            }
+        });
+    }
+}
+
+// Active Navigation Highlighting
+function setActiveNavLink() {
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        const linkPage = link.getAttribute('href');
+        if (linkPage === currentPage ||
+            (currentPage === '' && linkPage === 'index.html')) {
+            link.classList.add('active');
         }
     });
-});
+}
+
+// Load includes when DOM is ready
+document.addEventListener('DOMContentLoaded', loadIncludes);
+
+// Mobile Navigation Toggle (legacy - will be replaced by initializeNavigation)
+
 
 // Smooth Scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -165,39 +245,6 @@ document.querySelectorAll('.fade-in-up').forEach(el => {
     observer.observe(el);
 });
 
-// Active Navigation Highlighting
-function setActiveNavLink() {
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    const navLinks = document.querySelectorAll('.nav-links a');
-
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        const linkPage = link.getAttribute('href');
-        if (linkPage === currentPage ||
-            (currentPage === '' && linkPage === 'index.html')) {
-            link.classList.add('active');
-        }
-    });
-}
-
-// Set active nav link on page load
-setActiveNavLink();
-
-// Header scroll effect (optional - adds shadow on scroll)
-let lastScroll = 0;
-const header = document.querySelector('header');
-
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-
-    if (currentScroll > 50) {
-        header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
-    } else {
-        header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
-    }
-
-    lastScroll = currentScroll;
-});
 
 // Prevent form resubmission on page refresh
 if (window.history.replaceState) {
